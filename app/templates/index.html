@@ -1,0 +1,79 @@
+ <!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+    <meta charset="utf-8">
+    <title>Gerenciador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename="css/bootstrap.min.css") }}">
+    <style>
+        body {
+        background-color: #f3efef
+        }
+    </style>
+ </head>
+ <body>
+    <div class="col-md-12 fundo" align="center">
+        <div class="d-flex justify-content-center">
+            <h1>Olá, bem vindo ao gerenciador!</h1>
+        </div>
+    </div>
+    <div class="w-100 p-3">
+        <table class="table" >
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Sensor</th>
+                <th scope="col">Valor da Leitura</th>
+                <th scope="col">Status do Led</th>
+                <th scope="col">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Umidade ---></th>
+                <td>
+                    <h4> {{ umid }}</h4>
+                </td>
+                <td>
+                  <h4> {{ ledred  }}</h4>
+                </td>
+                <td>
+                  {% if ledred == 'LED vermelho ON' %}
+                    <a class="btn btn-primary" href="/led_vermelho/off" role="button">Desligar</a>
+                  {% else %} 
+                    <a class="btn btn-primary" href="/led_vermelho/on" role="button">Ligar</a> 
+                  {% endif %}
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Temperatura ---></th>
+                <td>
+                    <h4> {{ temp }}</h4>
+                </td>
+                <td>
+                  <h4> {{ ledgreen  }} </h4>
+                </td>
+                <td>
+                  {% if ledgreen == 'LED verde ON' %}
+                    <a class="btn btn-primary" href="/led_verde/off" role="button">Desligar</a>
+                  {% else %} 
+                    <a class="btn btn-primary" href="/led_verde/on" role="button">Ligar</a> 
+                  {% endif %}
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Ocupação lixeira ---></th>
+                <td>
+                    <h4> {{ ocup_lixeira }}</h4>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <a class="btn btn-outline-danger" href="/" role="button">Atualizar</a>
+                </th>
+              </tr>
+            </tbody>
+          </table>  
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename="js/bootstrap.min.js") }}"></script>
+ </body>  
+ </html>
